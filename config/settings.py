@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
-import os                       # ⭐ NEW: for STATIC_ROOT path
+import os                       # ⭐ for STATIC_ROOT path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-)+l(pzmw6dwg=5&7gwf6#gy_*ca-=8xw=1f1=7@r)e(qry7co%'
 
-# ⭐ CHANGED: DEBUG must be False in production
+# ⭐ DEBUG must be False in production
 DEBUG = False
 
-# ⭐ CHANGED: Replace 'yourusername' with your actual PythonAnywhere username
+# ⭐ Updated for PythonAnywhere username: abumuaaz
 ALLOWED_HOSTS = [
-    'yourusername.pythonanywhere.com',
+    'abumuaaz.pythonanywhere.com',
     '127.0.0.1',
     'localhost',
 ]
@@ -128,8 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Africa/Addis_Ababa'    # ⭐ CHANGED: Ethiopia timezone
-                                    # (was 'UTC' — better for local logs)
+TIME_ZONE = 'Africa/Addis_Ababa'    # ⭐ Ethiopia timezone
 
 USE_I18N = True
 
@@ -141,7 +140,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# ⭐ NEW: Where collectstatic will gather all static files for production
+# ⭐ Where collectstatic will gather static files for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
@@ -150,22 +149,28 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # ═══════════════════════════════════════════════════════════════
 
 # ── For DEVELOPMENT: prints emails to terminal instead of sending ──
-# MAILERS = {
-#     'default': {
-#         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-#     },
-# }
-# DEFAULT_FROM_EMAIL = 'GGH Community <noreply@gghcommunity.org>'
-
-# ── For PRODUCTION: real Gmail SMTP ──
-# ⚠️ After generating your Gmail App Password, fill in below and DELETE the # signs
 MAILERS = {
     'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',   # ← change to 'smtp' when ready
+        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
 
 DEFAULT_FROM_EMAIL = 'GGH Community <noreply@gghcommunity.org>'
+
+# ── For PRODUCTION: real Gmail SMTP (uncomment when ready) ──
+# MAILERS = {
+#     'default': {
+#         'BACKEND': 'django.core.mail.backends.smtp.EmailBackend',
+#         'OPTIONS': {
+#             'host': 'smtp.gmail.com',
+#             'port': 587,
+#             'use_tls': True,
+#             'username': 'your-email@gmail.com',
+#             'password': 'your-16-char-app-password',
+#         },
+#     },
+# }
+# DEFAULT_FROM_EMAIL = 'GGH Community <your-email@gmail.com>'
 
 
 # Media files
@@ -210,6 +215,5 @@ JAZZMIN_UI_TWEAKS = {
 
 ASSOCIATION_NAME = 'GGH Community Association'
 
-# ⭐ CHANGED: When deployed, use your live URL here
-# For local testing, temporarily set back to 'http://127.0.0.1:8000'
-SITE_URL = 'http://yourusername.pythonanywhere.com'
+# ⭐ Updated for PythonAnywhere: abumuaaz
+SITE_URL = 'http://abumuaaz.pythonanywhere.com'
